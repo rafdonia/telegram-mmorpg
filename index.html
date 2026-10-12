@@ -1,0 +1,118 @@
+
+cat > index.html <<'HTML'
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рафдония — MMORPG</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+    min-height: 100vh;
+      background: radial-gradient(ellipse at top, #183653, #080d18 70%);
+        color: #eaf5ff;
+          font-family: Arial, sans-serif;
+            padding: 20px;
+            }
+            main { max-width: 480px; margin: auto; }
+            header { text-align: center; margin: 15px 0 25px; }
+            h1 { color: #d8edff; letter-spacing: 3px; }
+            .subtitle { color: #d8b76a; font-size: 13px; }
+            .panel {
+              background: #101c2c;
+                border: 1px solid #426b91;
+                  border-radius: 14px;
+                    padding: 18px;
+                      margin-bottom: 16px;
+                        box-shadow: 0 0 20px #1b4b7020;
+                        }
+                        h2 { font-size: 17px; color: #8fd4ff; margin-top: 0; }
+                        .hero {
+                          text-align: center;
+                            padding: 25px 10px;
+                              background: linear-gradient(145deg, #183650, #101725);
+                              }
+                              .emblem { font-size: 54px; }
+                              .level { color: #d8b76a; margin-top: 8px; }
+                              .stat { margin: 15px 0; }
+                              .stat-label { display: flex; justify-content: space-between; font-size: 13px; }
+                              .bar { height: 9px; background: #27374a; border-radius: 8px; margin-top: 7px; overflow: hidden; }
+                              .fill { height: 100%; border-radius: 8px; }
+                              .hp { width: 100%; background: #55b98b; }
+                              .mp { width: 75%; background: #63b9f5; }
+                              .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+                              .stat-card { background: #17273a; padding: 12px; border-radius: 9px; text-align: center; }
+                              .stat-card strong { display: block; color: #e5c778; font-size: 20px; margin-top: 5px; }
+                              button {
+                                width: 100%;
+                                  border: 1px solid #8cbfe6;
+                                    border-radius: 10px;
+                                      padding: 14px;
+                                        color: #eaf5ff;
+                                          background: linear-gradient(100deg, #244d70, #19334e);
+                                            font-size: 15px;
+                                              margin-top: 9px;
+                                                cursor: pointer;
+                                                }
+                                                button:active { transform: scale(.98); }
+                                                footer { text-align: center; color: #8196aa; font-size: 12px; padding: 10px; }
+                                                </style>
+                                                </head>
+                                                <body>
+                                                <main>
+                                                  <header>
+                                                      <div class="subtitle">ХРОНИКИ НЕИЗВЕДАННОГО МИРА</div>
+                                                          <h1>❄ РАФДОНИЯ ❄</h1>
+                                                              <div class="subtitle">ТВОЯ ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
+                                                                </header>
+
+                                                                  <section class="panel hero">
+                                                                      <div class="emblem">⚔️</div>
+                                                                          <h2 id="heroName">Неизвестный герой</h2>
+                                                                              <div>Странник Рафдонии</div>
+                                                                                  <div class="level">Уровень 1 · Новичок</div>
+                                                                                    </section>
+
+                                                                                      <section class="panel">
+                                                                                          <h2>Состояние героя</h2>
+                                                                                              <div class="stat">
+                                                                                                    <div class="stat-label"><span>❤️ Здоровье</span><span>100 / 100</span></div>
+                                                                                                          <div class="bar"><div class="fill hp"></div></div>
+                                                                                                              </div>
+                                                                                                                  <div class="stat">
+                                                                                                                        <div class="stat-label"><span>💧 Мана</span><span>75 / 100</span></div>
+                                                                                                                              <div class="bar"><div class="fill mp"></div></div>
+                                                                                                                                  </div>
+                                                                                                                                    </section>
+
+                                                                                                                                      <section class="panel">
+                                                                                                                                          <h2>Характеристики</h2>
+                                                                                                                                              <div class="stats">
+                                                                                                                                                    <div class="stat-card">⚔️ Сила<strong>10</strong></div>
+                                                                                                                                                          <div class="stat-card">🛡️ Защита<strong>10</strong></div>
+                                                                                                                                                                <div class="stat-card">💨 Ловкость<strong>10</strong></div>
+                                                                                                                                                                      <div class="stat-card">✨ Интеллект<strong>10</strong></div>
+                                                                                                                                                                          </div>
+                                                                                                                                                                            </section>
+
+                                                                                                                                                                              <section class="panel">
+                                                                                                                                                                                  <h2>Приключение</h2>
+                                                                                                                                                                                      <button onclick="showMessage('Создание персонажа скоро станет доступно!')">👤 Персонаж</button>
+                                                                                                                                                                                          <button onclick="showMessage('Инвентарь пока пуст.')">🎒 Инвентарь</button>
+                                                                                                                                                                                              <button onclick="showMessage('Ты пока не вступил в бой.')">⚔️ Отправиться в бой</button>
+                                                                                                                                                                                                  <button onclick="showMessage('У тебя пока нет заданий.')">📜 Задания</button>
+                                                                                                                                                                                                    </section>
+
+                                                                                                                                                                                                      <footer>РАФДОНИЯ · РАННЯЯ ВЕРСИЯ 0.1</footer>
+                                                                                                                                                                                                      </main>
+                                                                                                                                                                                                      <script>
+                                                                                                                                                                                                      function showMessage(text) {
+                                                                                                                                                                                                        alert(text);
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                        </script>
+                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                        </html>
+                                                                                                                                                                                                        HTML
+                                                                                                                                                                                                        
