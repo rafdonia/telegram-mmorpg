@@ -1,118 +1,201 @@
-
-cat > index.html <<'HTML'
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Рафдония — MMORPG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Рапдония — MMORPG</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-    min-height: 100vh;
-      background: radial-gradient(ellipse at top, #183653, #080d18 70%);
-        color: #eaf5ff;
-          font-family: Arial, sans-serif;
-            padding: 20px;
-            }
-            main { max-width: 480px; margin: auto; }
-            header { text-align: center; margin: 15px 0 25px; }
-            h1 { color: #d8edff; letter-spacing: 3px; }
-            .subtitle { color: #d8b76a; font-size: 13px; }
-            .panel {
-              background: #101c2c;
-                border: 1px solid #426b91;
-                  border-radius: 14px;
-                    padding: 18px;
-                      margin-bottom: 16px;
-                        box-shadow: 0 0 20px #1b4b7020;
-                        }
-                        h2 { font-size: 17px; color: #8fd4ff; margin-top: 0; }
-                        .hero {
-                          text-align: center;
-                            padding: 25px 10px;
-                              background: linear-gradient(145deg, #183650, #101725);
-                              }
-                              .emblem { font-size: 54px; }
-                              .level { color: #d8b76a; margin-top: 8px; }
-                              .stat { margin: 15px 0; }
-                              .stat-label { display: flex; justify-content: space-between; font-size: 13px; }
-                              .bar { height: 9px; background: #27374a; border-radius: 8px; margin-top: 7px; overflow: hidden; }
-                              .fill { height: 100%; border-radius: 8px; }
-                              .hp { width: 100%; background: #55b98b; }
-                              .mp { width: 75%; background: #63b9f5; }
-                              .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-                              .stat-card { background: #17273a; padding: 12px; border-radius: 9px; text-align: center; }
-                              .stat-card strong { display: block; color: #e5c778; font-size: 20px; margin-top: 5px; }
-                              button {
-                                width: 100%;
-                                  border: 1px solid #8cbfe6;
-                                    border-radius: 10px;
-                                      padding: 14px;
-                                        color: #eaf5ff;
-                                          background: linear-gradient(100deg, #244d70, #19334e);
-                                            font-size: 15px;
-                                              margin-top: 9px;
-                                                cursor: pointer;
-                                                }
-                                                button:active { transform: scale(.98); }
-                                                footer { text-align: center; color: #8196aa; font-size: 12px; padding: 10px; }
-                                                </style>
-                                                </head>
-                                                <body>
-                                                <main>
-                                                  <header>
-                                                      <div class="subtitle">ХРОНИКИ НЕИЗВЕДАННОГО МИРА</div>
-                                                          <h1>❄ РАФДОНИЯ ❄</h1>
-                                                              <div class="subtitle">ТВОЯ ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
-                                                                </header>
+*{box-sizing:border-box}
+body{margin:0;background:#070d18;color:#eaf5ff;font-family:Arial,sans-serif}
+button{width:100%;padding:14px;margin-top:10px;border:1px solid #8cbfe6;border-radius:10px;background:linear-gradient(100deg,#244d70,#19334e);color:#fff;font-size:15px;cursor:pointer}
+.hidden{display:none!important}
+#intro{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#193b5b,transparent 55%),linear-gradient(#081322,#101e30 65%,#050911)}
+.scene{position:absolute;inset:0;transition:transform 2.4s ease-in;overflow:hidden}
+.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 10% 15%,white,transparent),radial-gradient(1px 1px at 25% 33%,#bde8ff,transparent),radial-gradient(2px 2px at 65% 12%,white,transparent),radial-gradient(1px 1px at 80% 25%,white,transparent),radial-gradient(2px 2px at 90% 44%,#bde8ff,transparent),radial-gradient(1px 1px at 43% 8%,white,transparent),radial-gradient(1px 1px at 15% 55%,white,transparent)}
+.moon{position:absolute;width:72px;height:72px;top:8%;right:13%;border-radius:50%;background:#e2f3ff;box-shadow:0 0 30px #8ccfff,0 0 90px #448dcf66}
+.city{position:absolute;bottom:26%;left:-5%;width:110%;height:32%;background:repeating-linear-gradient(90deg,#0b1928 0 30px,#183047 31px 48px,#091625 49px 70px);clip-path:polygon(0 28%,8% 28%,8% 10%,15% 10%,15% 35%,22% 35%,22% 0,28% 0,28% 25%,37% 25%,37% 12%,44% 12%,44% 38%,51% 38%,51% 5%,58% 5%,58% 30%,66% 30%,66% 0,73% 0,73% 26%,80% 26%,80% 12%,88% 12%,88% 36%,100% 36%,100% 100%,0 100%)}
+.city:after{content:"";position:absolute;inset:15% 0 0;background:repeating-linear-gradient(90deg,transparent 0 23px,#b5dfff44 24px 27px,transparent 28px 42px)}
+.square{position:absolute;left:-30%;bottom:-25%;width:160%;height:54%;background:linear-gradient(#1c3045,#080d16);clip-path:polygon(34% 0,66% 0,100% 100%,0 100%);border-top:2px solid #6b9ec3}
+.portal{position:absolute;width:160px;height:220px;left:50%;top:49%;transform:translate(-50%,-50%);border:5px solid #8bd8ff;border-radius:50% 50% 43% 43%;background:radial-gradient(ellipse,#dff8ff,#64baff 13%,#235ea5 35%,#0b1c39 67%,#040915);box-shadow:0 0 16px #8bd8ff,0 0 45px #4ba8ff,0 0 100px #286dff99,inset 0 0 35px #8bd8ff;animation:pulse 2.8s ease-in-out infinite;z-index:2}
+.portal:before{content:"";position:absolute;inset:-17px;border:2px solid #e5c778;border-radius:50% 50% 43% 43%;box-shadow:0 0 18px #e5c77888}
+.portal:after{content:"✧ ᚱ ✧";position:absolute;inset:0;display:grid;place-items:center;color:#fff4c6;font-size:32px;text-shadow:0 0 18px white,0 0 30px #8bd8ff}
+.portal-light{position:absolute;width:220px;height:70px;top:63%;left:50%;transform:translateX(-50%);background:#77caff;filter:blur(45px);opacity:.6}
+@keyframes pulse{50%{filter:brightness(1.4);box-shadow:0 0 24px white,0 0 70px #4ba8ff,0 0 130px #286dffcc,inset 0 0 45px white}}
+#intro.portal-flight .scene{transform:scale(5);transform-origin:50% 49%}
+#intro.portal-flight .portal{animation:none;filter:brightness(2)}
+.intro-heading{position:absolute;top:5%;left:5%;right:5%;text-align:center;z-index:5;text-shadow:0 2px 15px #000}
+h1{color:#d8edff;letter-spacing:3px}
+.intro-heading h1{letter-spacing:4px;font-size:clamp(25px,7vw,40px)}
+.subtitle{color:#d8b76a;font-size:12px;letter-spacing:2px}
+.intro-controls{position:absolute;z-index:6;left:8%;right:8%;bottom:5%;max-width:420px;margin:auto;text-align:center}
+.intro-text{font-size:14px;line-height:1.6;text-shadow:0 2px 10px #000}
+.progress-wrap{height:8px;border-radius:20px;background:#24384c;overflow:hidden;margin:14px 0 5px}
+#progressBar{width:0;height:100%;background:linear-gradient(90deg,#5baeff,#e3f7ff);box-shadow:0 0 12px #8bd8ff}
+#progressText{font-size:12px;color:#c7eaff}
+#story{position:absolute;z-index:7;top:16%;left:7%;right:7%;max-width:480px;margin:auto;padding:22px;border:1px solid #8bd8ff77;border-radius:16px;background:#040c18f2;box-shadow:0 0 35px #3284cc55;animation:appear .5s ease}
+#story h2{color:#e5c778;font-size:21px;text-align:center}
+#story p{line-height:1.65;font-size:15px;white-space:pre-line}
+.story-count{text-align:center;color:#8bd8ff;font-size:12px;letter-spacing:2px}
+@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+#heroPage{max-width:480px;margin:auto;padding:20px;animation:appear .7s ease}
+header{text-align:center;margin:15px 0 25px}
+.panel{background:#101c2cf2;border:1px solid #426b91;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 0 20px #1b4b7020}
+h2{font-size:17px;color:#8fd4ff;margin-top:0}
+.hero{text-align:center;padding:25px 10px;background:linear-gradient(145deg,#183650,#101725)}
+.emblem{font-size:54px}
+.level{color:#d8b76a;margin-top:8px}
+.stat{margin:15px 0}
+.stat-label{display:flex;justify-content:space-between;font-size:13px}
+.bar{height:9px;background:#27374a;border-radius:8px;margin-top:7px;overflow:hidden}
+.fill{height:100%;border-radius:8px}
+.hp{width:100%;background:#55b98b}
+.mp{width:75%;background:#63b9f5}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat-card{background:#17273a;padding:12px;border-radius:9px;text-align:center}
+.stat-card strong{display:block;color:#e5c778;font-size:20px;margin-top:5px}
+footer{text-align:center;color:#8196aa;font-size:12px;padding:10px}
+@media(max-height:700px){.portal{width:120px;height:165px}#story{top:10%;padding:16px}#story p{font-size:14px;line-height:1.45}}
+</style>
+</head>
+<body>
 
-                                                                  <section class="panel hero">
-                                                                      <div class="emblem">⚔️</div>
-                                                                          <h2 id="heroName">Неизвестный герой</h2>
-                                                                              <div>Странник Рафдонии</div>
-                                                                                  <div class="level">Уровень 1 · Новичок</div>
-                                                                                    </section>
+<section id="intro">
+  <div class="scene">
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="city"></div>
+    <div class="square"></div>
+    <div class="portal"></div>
+    <div class="portal-light"></div>
+  </div>
+  <div class="intro-heading">
+    <div class="subtitle">ХРОНИКИ НЕИЗВЕДАННОГО МИРА</div>
+    <h1>❄ РАПДОНИЯ ❄</h1>
+    <div class="subtitle">ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
+  </div>
+  <div class="intro-controls" id="introControls">
+    <p class="intro-text" id="introText">Перед тобой — врата в мир, где каждый шаг может стать последним. Осмелишься ли ты войти?</p>
+    <button id="startButton" onclick="startIntro()">✨ Приблизиться к порталу</button>
+    <div id="loading" class="hidden">
+      <div class="progress-wrap"><div id="progressBar"></div></div>
+      <div id="progressText">Подготовка к переходу: 0%</div>
+    </div>
+    <button id="skipButton" onclick="skipToStory()">Пропустить вступление</button>
+  </div>
+  <article id="story" class="hidden">
+    <div class="story-count" id="storyCount"></div>
+    <h2 id="storyTitle"></h2>
+    <p id="storyText"></p>
+    <button id="nextButton" onclick="nextStory()">Далее →</button>
+  </article>
+</section>
 
-                                                                                      <section class="panel">
-                                                                                          <h2>Состояние героя</h2>
-                                                                                              <div class="stat">
-                                                                                                    <div class="stat-label"><span>❤️ Здоровье</span><span>100 / 100</span></div>
-                                                                                                          <div class="bar"><div class="fill hp"></div></div>
-                                                                                                              </div>
-                                                                                                                  <div class="stat">
-                                                                                                                        <div class="stat-label"><span>💧 Мана</span><span>75 / 100</span></div>
-                                                                                                                              <div class="bar"><div class="fill mp"></div></div>
-                                                                                                                                  </div>
-                                                                                                                                    </section>
+<main id="heroPage" class="hidden">
+  <header>
+    <div class="subtitle">ХРОНИКИ НЕИЗВЕДАННОГО МИРА</div>
+    <h1>❄ РАПДОНИЯ ❄</h1>
+    <div class="subtitle">ТВОЯ ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
+  </header>
+  <section class="panel hero">
+    <div class="emblem">⚔️</div>
+    <h2>Неизвестный герой</h2>
+    <div>Странник Рапдонии</div>
+    <div class="level">Уровень 1 · Новичок</div>
+  </section>
+  <section class="panel">
+    <h2>Состояние героя</h2>
+    <div class="stat"><div class="stat-label"><span>❤️ Здоровье</span><span>100 / 100</span></div><div class="bar"><div class="fill hp"></div></div></div>
+    <div class="stat"><div class="stat-label"><span>💧 Мана</span><span>75 / 100</span></div><div class="bar"><div class="fill mp"></div></div></div>
+  </section>
+  <section class="panel">
+    <h2>Характеристики</h2>
+    <div class="stats">
+      <div class="stat-card">⚔️ Сила<strong>10</strong></div>
+      <div class="stat-card">🛡️ Защита<strong>10</strong></div>
+      <div class="stat-card">💨 Ловкость<strong>10</strong></div>
+      <div class="stat-card">✨ Интеллект<strong>10</strong></div>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Приключение</h2>
+    <button onclick="showMessage('Создание персонажа скоро станет доступно!')">👤 Персонаж</button>
+    <button onclick="showMessage('Инвентарь пока пуст.')">🎒 Инвентарь</button>
+    <button onclick="showMessage('Ты пока не вступил в бой.')">⚔️ Отправиться в бой</button>
+    <button onclick="showMessage('У тебя пока нет заданий.')">📜 Задания</button>
+  </section>
+  <footer>РАПДОНИЯ · РАННЯЯ ВЕРСИЯ 0.2</footer>
+</main>
 
-                                                                                                                                      <section class="panel">
-                                                                                                                                          <h2>Характеристики</h2>
-                                                                                                                                              <div class="stats">
-                                                                                                                                                    <div class="stat-card">⚔️ Сила<strong>10</strong></div>
-                                                                                                                                                          <div class="stat-card">🛡️ Защита<strong>10</strong></div>
-                                                                                                                                                                <div class="stat-card">💨 Ловкость<strong>10</strong></div>
-                                                                                                                                                                      <div class="stat-card">✨ Интеллект<strong>10</strong></div>
-                                                                                                                                                                          </div>
-                                                                                                                                                                            </section>
+<script>
+const stories=[
+{title:"РАПДОНИЯ — Последний оплот человечества",text:"Когда-то этот мир принадлежал людям. Города процветали, королевства развивались, а человечество верило в собственное будущее.\n\nНо однажды ведьма наложила на мир проклятие. С этого дня всё изменилось."},
+{title:"Мир, обречённый на гибель",text:"Проклятие постепенно превратило мир в место, непригодное для жизни. Государства пали, города опустели, а привычный порядок исчез.\n\nСреди руин возник последний оплот человечества — Рапдония. Когда-то город состоял из четырнадцати районов."},
+{title:"Цена спасения",text:"Правящая королевская семья установила обязательный налог за право жить внутри городских стен.\n\nТот, кто не мог заплатить установленную сумму, лишался права на жизнь в городе. В Рапдонии спасение имело свою цену."},
+{title:"Равигион III",text:"Первым королём Рапдонии стал Равигион III, вошедший в историю под именем Бессмертного.\n\nОднако даже его жизнь не могла длиться вечно. Он умер сто пятьдесят лет назад, оставив после себя наследие, о котором до сих пор спорят."},
+{title:"Война священных реликвий",text:"Около десяти лет назад Рапдонию потрясла война между феями и варварами.\n\nПричиной стали священные реликвии — артефакты, обладание которыми могло изменить баланс сил. Последствия той войны до сих пор ощущаются в городе."},
+{title:"Твой путь",text:"Теперь ты стоишь у порога Рапдонии — города, полного тайн, опасностей и возможностей.\n\nЧто скрывает проклятие ведьмы? Почему исчезли прежние королевства? И какие тайны хранят четырнадцать районов?\n\nОтветы ещё предстоит найти. Твоя история начинается сейчас."}
+];
 
-                                                                                                                                                                              <section class="panel">
-                                                                                                                                                                                  <h2>Приключение</h2>
-                                                                                                                                                                                      <button onclick="showMessage('Создание персонажа скоро станет доступно!')">👤 Персонаж</button>
-                                                                                                                                                                                          <button onclick="showMessage('Инвентарь пока пуст.')">🎒 Инвентарь</button>
-                                                                                                                                                                                              <button onclick="showMessage('Ты пока не вступил в бой.')">⚔️ Отправиться в бой</button>
-                                                                                                                                                                                                  <button onclick="showMessage('У тебя пока нет заданий.')">📜 Задания</button>
-                                                                                                                                                                                                    </section>
+let storyIndex=0;
+let loadingTimer=null;
+let flightTimer=null;
 
-                                                                                                                                                                                                      <footer>РАФДОНИЯ · РАННЯЯ ВЕРСИЯ 0.1</footer>
-                                                                                                                                                                                                      </main>
-                                                                                                                                                                                                      <script>
-                                                                                                                                                                                                      function showMessage(text) {
-                                                                                                                                                                                                        alert(text);
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        </script>
-                                                                                                                                                                                                        </body>
-                                                                                                                                                                                                        </html>
-                                                                                                                                                                                                        HTML
-                                                                                                                                                                                                        
+function startIntro(){
+  document.getElementById("startButton").classList.add("hidden");
+  document.getElementById("skipButton").classList.add("hidden");
+  document.getElementById("introText").textContent="Портал пробуждается. Пространство вокруг начинает искажаться…";
+  document.getElementById("loading").classList.remove("hidden");
+  const bar=document.getElementById("progressBar");
+  const label=document.getElementById("progressText");
+  let progress=0;
+  loadingTimer=setInterval(()=>{
+    progress=Math.min(progress+1,100);
+    bar.style.width=progress+"%";
+    label.textContent="Подготовка к переходу: "+progress+"%";
+    if(progress>=100){
+      clearInterval(loadingTimer);
+      loadingTimer=null;
+      document.getElementById("introText").textContent="Переход открыт. Приготовься…";
+      document.getElementById("intro").classList.add("portal-flight");
+      flightTimer=setTimeout(()=>{
+        flightTimer=null;
+        showStory(0);
+      },2400);
+    }
+  },45);
+}
+
+function skipToStory(){
+  if(loadingTimer){clearInterval(loadingTimer);loadingTimer=null}
+  if(flightTimer){clearTimeout(flightTimer);flightTimer=null}
+  showStory(0);
+}
+
+function showStory(index){
+  storyIndex=index;
+  document.getElementById("introControls").classList.add("hidden");
+  const box=document.getElementById("story");
+  box.classList.remove("hidden");
+  document.getElementById("storyCount").textContent="ГЛАВА "+(index+1)+" ИЗ "+stories.length;
+  document.getElementById("storyTitle").textContent=stories[index].title;
+  document.getElementById("storyText").textContent=stories[index].text;
+  document.getElementById("nextButton").textContent=index===stories.length-1?"Завершить вступление →":"Далее →";
+  box.style.animation="none";
+  void box.offsetWidth;
+  box.style.animation="";
+}
+
+function nextStory(){
+  if(storyIndex<stories.length-1){
+    showStory(storyIndex+1);
+  }else{
+    document.getElementById("intro").classList.add("hidden");
+    document.getElementById("heroPage").classList.remove("hidden");
+    window.scrollTo(0,0);
+  }
+}
+
+function showMessage(text){alert(text)}
+</script>
+</body>
+</html>
