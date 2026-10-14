@@ -6,174 +6,138 @@
 <title>Рапдония — MMORPG</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#070d18;color:#eaf5ff;font-family:Arial,sans-serif}
-button{width:100%;padding:14px;margin-top:10px;border:1px solid #8cbfe6;border-radius:10px;background:linear-gradient(100deg,#244d70,#19334e);color:#fff;font-size:15px;cursor:pointer}
+:root{--ice:#9be5ff;--gold:#e8c878}
+body{margin:0;background:#080e18;color:#edf6ff;font-family:Arial,sans-serif}
 .hidden{display:none!important}
-#intro{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#193b5b,transparent 55%),linear-gradient(#081322,#101e30 65%,#050911)}
-.scene{position:absolute;inset:0;transition:transform 2.4s ease-in;overflow:hidden}
-.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 10% 15%,white,transparent),radial-gradient(1px 1px at 25% 33%,#bde8ff,transparent),radial-gradient(2px 2px at 65% 12%,white,transparent),radial-gradient(1px 1px at 80% 25%,white,transparent),radial-gradient(2px 2px at 90% 44%,#bde8ff,transparent),radial-gradient(1px 1px at 43% 8%,white,transparent),radial-gradient(1px 1px at 15% 55%,white,transparent)}
-.moon{position:absolute;width:72px;height:72px;top:8%;right:13%;border-radius:50%;background:#e2f3ff;box-shadow:0 0 30px #8ccfff,0 0 90px #448dcf66}
-.city{position:absolute;bottom:26%;left:-5%;width:110%;height:32%;background:repeating-linear-gradient(90deg,#0b1928 0 30px,#183047 31px 48px,#091625 49px 70px);clip-path:polygon(0 28%,8% 28%,8% 10%,15% 10%,15% 35%,22% 35%,22% 0,28% 0,28% 25%,37% 25%,37% 12%,44% 12%,44% 38%,51% 38%,51% 5%,58% 5%,58% 30%,66% 30%,66% 0,73% 0,73% 26%,80% 26%,80% 12%,88% 12%,88% 36%,100% 36%,100% 100%,0 100%)}
-.city:after{content:"";position:absolute;inset:15% 0 0;background:repeating-linear-gradient(90deg,transparent 0 23px,#b5dfff44 24px 27px,transparent 28px 42px)}
-.square{position:absolute;left:-30%;bottom:-25%;width:160%;height:54%;background:linear-gradient(#1c3045,#080d16);clip-path:polygon(34% 0,66% 0,100% 100%,0 100%);border-top:2px solid #6b9ec3}
-.portal{position:absolute;width:160px;height:220px;left:50%;top:49%;transform:translate(-50%,-50%);border:5px solid #8bd8ff;border-radius:50% 50% 43% 43%;background:radial-gradient(ellipse,#dff8ff,#64baff 13%,#235ea5 35%,#0b1c39 67%,#040915);box-shadow:0 0 16px #8bd8ff,0 0 45px #4ba8ff,0 0 100px #286dff99,inset 0 0 35px #8bd8ff;animation:pulse 2.8s ease-in-out infinite;z-index:2}
-.portal:before{content:"";position:absolute;inset:-17px;border:2px solid #e5c778;border-radius:50% 50% 43% 43%;box-shadow:0 0 18px #e5c77888}
-.portal:after{content:"✧ ᚱ ✧";position:absolute;inset:0;display:grid;place-items:center;color:#fff4c6;font-size:32px;text-shadow:0 0 18px white,0 0 30px #8bd8ff}
-.portal-light{position:absolute;width:220px;height:70px;top:63%;left:50%;transform:translateX(-50%);background:#77caff;filter:blur(45px);opacity:.6}
-@keyframes pulse{50%{filter:brightness(1.4);box-shadow:0 0 24px white,0 0 70px #4ba8ff,0 0 130px #286dffcc,inset 0 0 45px white}}
-#intro.portal-flight .scene{transform:scale(5);transform-origin:50% 49%}
-#intro.portal-flight .portal{animation:none;filter:brightness(2)}
-.intro-heading{position:absolute;top:5%;left:5%;right:5%;text-align:center;z-index:5;text-shadow:0 2px 15px #000}
-h1{color:#d8edff;letter-spacing:3px}
-.intro-heading h1{letter-spacing:4px;font-size:clamp(25px,7vw,40px)}
-.subtitle{color:#d8b76a;font-size:12px;letter-spacing:2px}
-.intro-controls{position:absolute;z-index:6;left:8%;right:8%;bottom:5%;max-width:420px;margin:auto;text-align:center}
-.intro-text{font-size:14px;line-height:1.6;text-shadow:0 2px 10px #000}
-.progress-wrap{height:8px;border-radius:20px;background:#24384c;overflow:hidden;margin:14px 0 5px}
-#progressBar{width:0;height:100%;background:linear-gradient(90deg,#5baeff,#e3f7ff);box-shadow:0 0 12px #8bd8ff}
-#progressText{font-size:12px;color:#c7eaff}
-#story{position:absolute;z-index:7;top:16%;left:7%;right:7%;max-width:480px;margin:auto;padding:22px;border:1px solid #8bd8ff77;border-radius:16px;background:#040c18f2;box-shadow:0 0 35px #3284cc55;animation:appear .5s ease}
-#story h2{color:#e5c778;font-size:21px;text-align:center}
-#story p{line-height:1.65;font-size:15px;white-space:pre-line}
-.story-count{text-align:center;color:#8bd8ff;font-size:12px;letter-spacing:2px}
-@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-#heroPage{max-width:480px;margin:auto;padding:20px;animation:appear .7s ease}
-header{text-align:center;margin:15px 0 25px}
-.panel{background:#101c2cf2;border:1px solid #426b91;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 0 20px #1b4b7020}
-h2{font-size:17px;color:#8fd4ff;margin-top:0}
-.hero{text-align:center;padding:25px 10px;background:linear-gradient(145deg,#183650,#101725)}
-.emblem{font-size:54px}
-.level{color:#d8b76a;margin-top:8px}
-.stat{margin:15px 0}
-.stat-label{display:flex;justify-content:space-between;font-size:13px}
-.bar{height:9px;background:#27374a;border-radius:8px;margin-top:7px;overflow:hidden}
-.fill{height:100%;border-radius:8px}
-.hp{width:100%;background:#55b98b}
-.mp{width:75%;background:#63b9f5}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat-card{background:#17273a;padding:12px;border-radius:9px;text-align:center}
-.stat-card strong{display:block;color:#e5c778;font-size:20px;margin-top:5px}
-footer{text-align:center;color:#8196aa;font-size:12px;padding:10px}
-@media(max-height:700px){.portal{width:120px;height:165px}#story{top:10%;padding:16px}#story p{font-size:14px;line-height:1.45}}
+#intro{height:100svh;min-height:540px;position:relative;overflow:hidden;background:linear-gradient(#101e30 0%,#25374a 58%,#080d15 100%)}
+.sky{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 44%,#59728a66,transparent 52%)}
+.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 12% 12%,#fff,transparent),radial-gradient(2px 2px at 85% 18%,#fff,transparent),radial-gradient(1px 1px at 65% 10%,#d7edff,transparent),radial-gradient(2px 2px at 27% 25%,#fff,transparent);opacity:.7}
+.moon{position:absolute;right:12%;top:8%;width:48px;height:48px;border-radius:50%;background:#d9edff;box-shadow:0 0 35px #9acfff88}
+.city{position:absolute;inset:17% 0 24%;overflow:hidden}
+.building{position:absolute;bottom:0;border:1px solid #53677a;background:linear-gradient(90deg,#152535,#344354 50%,#172635);box-shadow:inset 0 0 24px #080d17}
+.building:before{content:"";position:absolute;inset:14px 8px;background:repeating-linear-gradient(90deg,transparent 0 17px,#e7bd6b 18px 23px,transparent 24px 37px),repeating-linear-gradient(0deg,transparent 0 22px,#e7bd6b 23px 28px,transparent 29px 43px);opacity:.65}
+.b1{left:-3%;width:24%;height:65%;clip-path:polygon(0 12%,60% 12%,60% 0,83% 0,83% 20%,100% 20%,100% 100%,0 100%)}
+.b2{left:18%;width:22%;height:48%}
+.b3{right:17%;width:23%;height:57%;clip-path:polygon(0 14%,24% 14%,24% 0,70% 0,70% 14%,100% 14%,100% 100%,0 100%)}
+.b4{right:-5%;width:25%;height:72%;clip-path:polygon(0 18%,20% 18%,20% 0,75% 0,75% 18%,100% 18%,100% 100%,0 100%)}
+.tower{position:absolute;bottom:0;left:44%;width:13%;height:78%;background:linear-gradient(90deg,#182638,#45566a,#192737);clip-path:polygon(0 22%,25% 22%,25% 8%,40% 8%,40% 0,60% 0,60% 8%,75% 8%,75% 22%,100% 22%,100% 100%,0 100%);border-top:2px solid #b4d6e9}
+.tower:after{content:"";position:absolute;inset:24% 35% 0;background:repeating-linear-gradient(0deg,#e5c778 0 9px,transparent 10px 24px)}
+.street{position:absolute;left:-30%;bottom:-28%;width:160%;height:56%;background:linear-gradient(#4b5865,#101822 80%);clip-path:polygon(37% 0,63% 0,100% 100%,0 100%)}
+.street:before{content:"";position:absolute;left:49%;top:0;width:2px;height:100%;background:#d6c59a66;transform:rotate(2deg)}
+.lamp{position:absolute;bottom:21%;width:5px;height:100px;background:#172333;z-index:2}
+.lamp:before{content:"";position:absolute;top:-5px;left:-8px;width:20px;height:15px;border-radius:50%;background:#ffe5a0;box-shadow:0 0 15px #ffd978,0 0 40px #ffd97899}
+.l1{left:12%}.l2{right:12%;transform:scale(.8)}
+.market{position:absolute;bottom:27%;width:95px;height:70px;background:#513f34;border:2px solid #b89a68;z-index:2}
+.market:before{content:"";position:absolute;left:-8px;top:-22px;width:108px;height:25px;background:repeating-linear-gradient(90deg,#9e443b 0 18px,#e0c18a 18px 36px);clip-path:polygon(0 100%,10% 0,90% 0,100% 100%)}
+.market:after{content:"";position:absolute;left:12px;right:12px;top:18px;bottom:0;background:repeating-linear-gradient(90deg,#e5c778 0 3px,transparent 3px 22px)}
+.m1{left:3%;transform:scale(.8);transform-origin:bottom left}.m2{right:3%;transform:scale(.9);transform-origin:bottom right}
+.person{position:absolute;bottom:18%;width:13px;height:35px;background:#172435;border-radius:7px 7px 2px 2px;z-index:3;animation:walk 3s ease-in-out infinite alternate}
+.person:before{content:"";position:absolute;top:-12px;left:2px;width:9px;height:11px;background:#d3b59a;border-radius:50%}
+.p1{left:24%;animation-delay:-1s}.p2{right:26%;animation-delay:-2s}.p3{left:66%;transform:scale(.8);animation-delay:-.5s}
+@keyframes walk{from{translate:-7px 0}to{translate:9px 0}}
+.portal-wrap{position:absolute;left:50%;top:51%;width:min(78vw,410px);aspect-ratio:1;transform:translate(-50%,-50%);display:grid;place-items:center;z-index:5;pointer-events:none}
+.portal{width:0;height:0;border-radius:50%;opacity:0;background:radial-gradient(circle,#e8fbff 0%,#91e6ff 9%,#388ed8 25%,#172c5b 53%,#050a18 70%);border:2px solid #d4f7ff;box-shadow:0 0 22px #8bd8ff,0 0 65px #3b9fff,inset 0 0 30px #a8eaff;transition:none}
+.portal:before{content:"";position:absolute;inset:-12px;border:2px solid var(--gold);border-radius:50%;box-shadow:0 0 25px #e8c878}
+.portal:after{content:"";position:absolute;inset:12%;border:1px dashed #d9f5ff;border-radius:50%;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#intro.portal-flight .scene{transform:scale(7);transform-origin:50% 51%;transition:transform 2.1s ease-in}
+.scene{position:absolute;inset:0;transition:transform 2.1s ease-in}
+.heading{position:absolute;top:4%;left:4%;right:4%;text-align:center;z-index:8;text-shadow:0 2px 15px #000}
+.heading h1{margin:8px 0;color:#e4f5ff;font-size:clamp(26px,7vw,40px);letter-spacing:4px}
+.subtitle{color:var(--gold);font-size:11px;letter-spacing:2px}
+.loading-ui{position:absolute;z-index:8;bottom:5%;left:8%;right:8%;text-align:center;text-shadow:0 2px 8px #000}
+#loadingText{font-size:14px;line-height:1.5}
+.progress{height:8px;background:#263849;border-radius:20px;overflow:hidden;margin:12px 0 7px}
+#progressBar{width:0;height:100%;background:linear-gradient(90deg,#4ba7ff,#e6fbff);box-shadow:0 0 14px #8bd8ff}
+#progressLabel{font-size:12px;color:#cdeaff}
+#story{position:absolute;z-index:10;top:50%;left:6%;right:6%;transform:translateY(-50%);max-width:480px;margin:auto;padding:22px;border:1px solid #8bd8ff88;border-radius:16px;background:#07111df5;box-shadow:0 0 40px #3284cc55;animation:appear .6s ease}
+#story h2{text-align:center;color:var(--gold);font-size:21px}
+#story p{white-space:pre-line;line-height:1.65;font-size:15px}
+.count{text-align:center;color:var(--ice);font-size:12px;letter-spacing:2px}
+#story button{width:100%;padding:13px;border:1px solid #8cbfe6;border-radius:10px;background:linear-gradient(100deg,#244d70,#19334e);color:white;font-size:15px}
+@keyframes appear{from{opacity:0;translate:0 15px}to{opacity:1;translate:0 0}}
+@media(max-height:650px){.portal-wrap{top:49%;width:min(60vw,300px)}.heading{top:2%}.loading-ui{bottom:2%}#story{padding:15px;top:48%}#story p{font-size:14px;line-height:1.45}}
 </style>
 </head>
 <body>
-
 <section id="intro">
   <div class="scene">
-    <div class="stars"></div>
-    <div class="moon"></div>
-    <div class="city"></div>
-    <div class="square"></div>
-    <div class="portal"></div>
-    <div class="portal-light"></div>
+    <div class="sky"></div><div class="stars"></div><div class="moon"></div>
+    <div class="city">
+      <div class="building b1"></div><div class="building b2"></div>
+      <div class="tower"></div><div class="building b3"></div><div class="building b4"></div>
+    </div>
+    <div class="street"></div>
+    <div class="lamp l1"></div><div class="lamp l2"></div>
+    <div class="market m1"></div><div class="market m2"></div>
+    <div class="person p1"></div><div class="person p2"></div><div class="person p3"></div>
+    <div class="portal-wrap"><div class="portal" id="portal"></div></div>
   </div>
-  <div class="intro-heading">
+  <div class="heading">
     <div class="subtitle">ХРОНИКИ НЕИЗВЕДАННОГО МИРА</div>
     <h1>❄ РАПДОНИЯ ❄</h1>
-    <div class="subtitle">ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
+    <div class="subtitle">ПОСЛЕДНИЙ ОПЛОТ ЧЕЛОВЕЧЕСТВА</div>
   </div>
-  <div class="intro-controls" id="introControls">
-    <p class="intro-text" id="introText">Перед тобой — врата в мир, где каждый шаг может стать последним. Осмелишься ли ты войти?</p>
-    <button id="startButton" onclick="startIntro()">✨ Приблизиться к порталу</button>
-    <div id="loading" class="hidden">
-      <div class="progress-wrap"><div id="progressBar"></div></div>
-      <div id="progressText">Подготовка к переходу: 0%</div>
-    </div>
-    <button id="skipButton" onclick="skipToStory()">Пропустить вступление</button>
+  <div class="loading-ui" id="loadingUI">
+    <div id="loadingText">Врата между мирами пробуждаются…</div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div id="progressLabel">Открытие портала: 0%</div>
   </div>
   <article id="story" class="hidden">
-    <div class="story-count" id="storyCount"></div>
+    <div class="count" id="storyCount"></div>
     <h2 id="storyTitle"></h2>
     <p id="storyText"></p>
     <button id="nextButton" onclick="nextStory()">Далее →</button>
   </article>
 </section>
 
-<main id="heroPage" class="hidden">
-  <header>
-    <div class="subtitle">ХРОНИКИ НЕИЗВЕДАННОГО МИРА</div>
-    <h1>❄ РАПДОНИЯ ❄</h1>
-    <div class="subtitle">ТВОЯ ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
-  </header>
-  <section class="panel hero">
-    <div class="emblem">⚔️</div>
-    <h2>Неизвестный герой</h2>
-    <div>Странник Рапдонии</div>
-    <div class="level">Уровень 1 · Новичок</div>
-  </section>
-  <section class="panel">
-    <h2>Состояние героя</h2>
-    <div class="stat"><div class="stat-label"><span>❤️ Здоровье</span><span>100 / 100</span></div><div class="bar"><div class="fill hp"></div></div></div>
-    <div class="stat"><div class="stat-label"><span>💧 Мана</span><span>75 / 100</span></div><div class="bar"><div class="fill mp"></div></div></div>
-  </section>
-  <section class="panel">
-    <h2>Характеристики</h2>
-    <div class="stats">
-      <div class="stat-card">⚔️ Сила<strong>10</strong></div>
-      <div class="stat-card">🛡️ Защита<strong>10</strong></div>
-      <div class="stat-card">💨 Ловкость<strong>10</strong></div>
-      <div class="stat-card">✨ Интеллект<strong>10</strong></div>
-    </div>
-  </section>
-  <section class="panel">
-    <h2>Приключение</h2>
-    <button onclick="showMessage('Создание персонажа скоро станет доступно!')">👤 Персонаж</button>
-    <button onclick="showMessage('Инвентарь пока пуст.')">🎒 Инвентарь</button>
-    <button onclick="showMessage('Ты пока не вступил в бой.')">⚔️ Отправиться в бой</button>
-    <button onclick="showMessage('У тебя пока нет заданий.')">📜 Задания</button>
-  </section>
-  <footer>РАПДОНИЯ · РАННЯЯ ВЕРСИЯ 0.2</footer>
-</main>
-
 <script>
 const stories=[
 {title:"РАПДОНИЯ — Последний оплот человечества",text:"Когда-то этот мир принадлежал людям. Города процветали, королевства развивались, а человечество верило в собственное будущее.\n\nНо однажды ведьма наложила на мир проклятие. С этого дня всё изменилось."},
 {title:"Мир, обречённый на гибель",text:"Проклятие постепенно превратило мир в место, непригодное для жизни. Государства пали, города опустели, а привычный порядок исчез.\n\nСреди руин возник последний оплот человечества — Рапдония. Когда-то город состоял из четырнадцати районов."},
 {title:"Цена спасения",text:"Правящая королевская семья установила обязательный налог за право жить внутри городских стен.\n\nТот, кто не мог заплатить установленную сумму, лишался права на жизнь в городе. В Рапдонии спасение имело свою цену."},
-{title:"Равигион III",text:"Первым королём Рапдонии стал Равигион III, вошедший в историю под именем Бессмертного.\n\nОднако даже его жизнь не могла длиться вечно. Он умер сто пятьдесят лет назад, оставив после себя наследие, о котором до сих пор спорят."},
-{title:"Война священных реликвий",text:"Около десяти лет назад Рапдонию потрясла война между феями и варварами.\n\nПричиной стали священные реликвии — артефакты, обладание которыми могло изменить баланс сил. Последствия той войны до сих пор ощущаются в городе."},
-{title:"Твой путь",text:"Теперь ты стоишь у порога Рапдонии — города, полного тайн, опасностей и возможностей.\n\nЧто скрывает проклятие ведьмы? Почему исчезли прежние королевства? И какие тайны хранят четырнадцать районов?\n\nОтветы ещё предстоит найти. Твоя история начинается сейчас."}
+{title:"Равигион III",text:"Первым королём Рапдонии стал Равигион III, вошедший в историю под именем Бессмертного.\n\nОн умер сто пятьдесят лет назад, оставив после себя наследие, о котором до сих пор спорят."},
+{title:"Война священных реликвий",text:"Около десяти лет назад Рапдонию потрясла война между феями и варварами.\n\nПричиной стали священные реликвии — артефакты, обладание которыми могло изменить баланс сил. Последствия войны до сих пор ощущаются в городе."},
+{title:"Твой путь",text:"Теперь ты стоишь у порога Рапдонии — города, полного тайн, опасностей и возможностей.\n\nЧто скрывает проклятие ведьмы? Почему исчезли прежние королевства? Какие тайны хранят четырнадцать районов?\n\nОтветы ещё предстоит найти. Твоя история начинается сейчас."}
 ];
 
+let progress=0;
 let storyIndex=0;
-let loadingTimer=null;
-let flightTimer=null;
+let phase="opening";
+const portal=document.getElementById("portal");
+const intro=document.getElementById("intro");
+const bar=document.getElementById("progressBar");
+const label=document.getElementById("progressLabel");
+const loadingText=document.getElementById("loadingText");
 
-function startIntro(){
-  document.getElementById("startButton").classList.add("hidden");
-  document.getElementById("skipButton").classList.add("hidden");
-  document.getElementById("introText").textContent="Портал пробуждается. Пространство вокруг начинает искажаться…";
-  document.getElementById("loading").classList.remove("hidden");
-  const bar=document.getElementById("progressBar");
-  const label=document.getElementById("progressText");
-  let progress=0;
-  loadingTimer=setInterval(()=>{
-    progress=Math.min(progress+1,100);
-    bar.style.width=progress+"%";
-    label.textContent="Подготовка к переходу: "+progress+"%";
-    if(progress>=100){
-      clearInterval(loadingTimer);
-      loadingTimer=null;
-      document.getElementById("introText").textContent="Переход открыт. Приготовься…";
-      document.getElementById("intro").classList.add("portal-flight");
-      flightTimer=setTimeout(()=>{
-        flightTimer=null;
-        showStory(0);
-      },2400);
-    }
-  },45);
-}
-
-function skipToStory(){
-  if(loadingTimer){clearInterval(loadingTimer);loadingTimer=null}
-  if(flightTimer){clearTimeout(flightTimer);flightTimer=null}
-  showStory(0);
+function animatePortal(){
+  if(phase!=="opening")return;
+  progress=Math.min(100,progress+0.5);
+  const size=progress*3.5;
+  portal.style.width=size+"px";
+  portal.style.height=size+"px";
+  portal.style.opacity=Math.min(1,progress/8);
+  portal.style.borderWidth=(2+progress/18)+"px";
+  portal.style.boxShadow=`0 0 ${10+progress/2}px #8bd8ff,0 0 ${20+progress}px #3b9fff,inset 0 0 ${10+progress/2}px #a8eaff`;
+  bar.style.width=progress+"%";
+  label.textContent="Открытие портала: "+Math.floor(progress)+"%";
+  if(progress<100){
+    requestAnimationFrame(animatePortal);
+  }else{
+    label.textContent="Портал открыт: 100%";
+    loadingText.textContent="Переход в Рапдонию…";
+    phase="flight";
+    setTimeout(()=>{
+      intro.classList.add("portal-flight");
+      setTimeout(()=>showStory(0),2100);
+    },350);
+  }
 }
 
 function showStory(index){
+  phase="story";
   storyIndex=index;
-  document.getElementById("introControls").classList.add("hidden");
+  document.getElementById("loadingUI").classList.add("hidden");
   const box=document.getElementById("story");
   box.classList.remove("hidden");
   document.getElementById("storyCount").textContent="ГЛАВА "+(index+1)+" ИЗ "+stories.length;
@@ -189,13 +153,14 @@ function nextStory(){
   if(storyIndex<stories.length-1){
     showStory(storyIndex+1);
   }else{
-    document.getElementById("intro").classList.add("hidden");
-    document.getElementById("heroPage").classList.remove("hidden");
-    window.scrollTo(0,0);
+    document.getElementById("storyTitle").textContent="Добро пожаловать в Рапдонию";
+    document.getElementById("storyText").textContent="Вступление завершено. Следующим шагом мы создадим новый экран игры.";
+    document.getElementById("storyCount").textContent="ВСТУПЛЕНИЕ ЗАВЕРШЕНО";
+    document.getElementById("nextButton").classList.add("hidden");
   }
 }
 
-function showMessage(text){alert(text)}
+requestAnimationFrame(animatePortal);
 </script>
 </body>
 </html>
